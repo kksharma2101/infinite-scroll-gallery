@@ -28,7 +28,7 @@ const PhotoGallery = () => {
   };
 
   // Infinite Scroll using Intersection server
-  useEffect(() => {
+  const loadPage = () => {
     const options = {
       root: null,
       rootMargin: "20px",
@@ -52,10 +52,11 @@ const PhotoGallery = () => {
         currentObserver.unobserve(lastPhotoElementRef.current);
       }
     };
-  }, [loading]);
+  };
 
   useEffect(() => {
     fetchPhotos(page);
+    loadPage()
   }, [page]);
 
   return (
