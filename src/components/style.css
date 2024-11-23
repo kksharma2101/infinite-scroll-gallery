@@ -1,0 +1,35 @@
+.photo-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 300px;
+  justify-content: center;
+  gap: 30px;
+  /* padding: 0px 10px; */
+}
+.photo-card > div > img {
+  border-radius: 5px;
+}
+.photo-card > div > img:hover {
+  box-shadow: 0px 0.5px 1px 3px rgb(0, 0, 0);
+  zoom: 1.01;
+}
+.photo-card > div > .description {
+  margin: 10px 0;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+@media screen and (min-width: 768px) {
+  .photo-card {
+    grid-template-columns: 300px 300px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .photo-card {
+    grid-template-columns: 300px 300px 300px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .photo-card {
+    grid-template-columns: 300px 300px 300px 300px;
+  }
+}
