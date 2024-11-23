@@ -7,7 +7,7 @@ const Header = () => {
       <div>
         <h1>1,000,000+ Free Images</h1>
         <p>
-          Explore the world's premier collection of high-quality
+          Explore the world`s premier collection of high-quality
           pictures—submitted by our community of talented contributors and
           completely free to use for any purpose.
         </p>

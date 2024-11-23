@@ -2,11 +2,14 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import "./style.css";
+// import Image from "next/image";
 
 const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
+  const lastPhotoElementRef = useRef(null);
+
   // const server = useRef();
 
   // Fetch images from Unsplash API
@@ -14,7 +17,7 @@ const PhotoGallery = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_UNSPLASH_API}photos?page=${page}&count=10&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
+        `https://api.unsplash.com/photos?page=${page}&count=10&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
       );
       setPhotos((prevPhotos) => [...prevPhotos, ...response.data]);
       setLoading(false);
@@ -25,7 +28,6 @@ const PhotoGallery = () => {
   };
 
   // Infinite Scroll using Intersection server
-  const lastPhotoElementRef = useRef();
   useEffect(() => {
     const options = {
       root: null,
@@ -58,10 +60,10 @@ const PhotoGallery = () => {
 
   return (
     <div className="photo-card">
-      {photos.map((photo, index) => (
+      {photos?.map((photo, index) => (
         <div key={index}>
           <img
-            src={photo.urls.small}
+            src={photo?.urls?.small}
             alt={photo.alt_description}
             width={300}
             height={150}
