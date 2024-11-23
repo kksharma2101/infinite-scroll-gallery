@@ -17,7 +17,7 @@ const PhotoGallery = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://api.unsplash.com/photos?page=${page}&count=10&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
+        `https://api.unsplash.com/photos?page=${page}&count=10&client_id=kAAlqAH23O9cKNbdSE0C1QxcyPEWsQVadseBz4_aZHU`
       );
       setPhotos((prevPhotos) => [...prevPhotos, ...response.data]);
       setLoading(false);
@@ -56,7 +56,7 @@ const PhotoGallery = () => {
 
   useEffect(() => {
     fetchPhotos(page);
-    loadPage()
+    loadPage();
   }, [page]);
 
   return (
