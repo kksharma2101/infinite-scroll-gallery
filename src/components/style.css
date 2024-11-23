@@ -8,6 +8,7 @@
 }
 .photo-card > div > img {
   border-radius: 5px;
+  cursor: pointer;
 }
 .photo-card > div > img:hover {
   box-shadow: 0px 0.5px 1px 3px rgb(0, 0, 0);
@@ -31,5 +32,31 @@
 @media screen and (min-width: 1200px) {
   .photo-card {
     grid-template-columns: 300px 300px 300px 300px;
+  }
+}
+
+/* Heading components style */
+.heading-container {
+  width: 100%;
+  padding: 15px 20px;
+  margin-bottom: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex-direction: column; */
+}
+.heading-container > div > h1 {
+  padding: 10px 0px;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.heading-container > div > p {
+  font-size: large;
+  padding: 10px 0;
+  line-height: 25px
+}
+@media screen and (min-width: 768px) {
+  .heading-container > div {
+    width: 600px;
   }
 }

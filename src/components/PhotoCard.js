@@ -7,14 +7,14 @@ const PhotoGallery = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
-  const observer = useRef();
+  // const server = useRef();
 
   // Fetch images from Unsplash API
   const fetchPhotos = async (page) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_UNSPLASH_API}photos?page=${page}&per_page=10&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
+        `${process.env.NEXT_PUBLIC_UNSPLASH_API}photos?page=${page}&count=10&client_id=${process.env.NEXT_PUBLIC_UNSPLASH_ACCESS_KEY}`
       );
       setPhotos((prevPhotos) => [...prevPhotos, ...response.data]);
       setLoading(false);
@@ -24,7 +24,7 @@ const PhotoGallery = () => {
     }
   };
 
-  // Infinite Scroll using Intersection Observer
+  // Infinite Scroll using Intersection server
   const lastPhotoElementRef = useRef();
   useEffect(() => {
     const options = {
@@ -33,7 +33,7 @@ const PhotoGallery = () => {
       threshold: 1.0,
     };
 
-    const callback = (entries, observer) => {
+    const callback = (entries) => {
       if (entries[0].isIntersecting && !loading) {
         setPage((prevPage) => prevPage + 1);
       }
@@ -63,7 +63,6 @@ const PhotoGallery = () => {
           <img
             src={photo.urls.small}
             alt={photo.alt_description}
-            // className="w-full h-full object-cover rounded-lg"
             width={300}
             height={150}
           />
